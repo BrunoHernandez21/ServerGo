@@ -3,9 +3,6 @@ package main
 import (
 	"cursos_app/src/config"
 	"cursos_app/src/rutes/auth"
-	"cursos_app/src/rutes/categories"
-	"cursos_app/src/rutes/curso"
-	"cursos_app/src/rutes/my_curses"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -28,10 +25,6 @@ func main() {
 	db := conexionDB()
 	//Rutas
 	auth.Init_routes(app, db)
-	curso.Init_routes(app, db)
-	categories.Init_routes(app, db)
-	my_curses.Init_routes(app, db)
-
 	//Iniciar Servidor
 	err2 := app.Listen(":3000")
 	if err2 != nil {
@@ -41,7 +34,7 @@ func main() {
 }
 
 func conexionDB() (conexiones *gorm.DB) {
-	dns := config.DB.User + ":" + config.DB.Password + config.DB.Soc + config.DB.Name
+	dns := config.DB.User + ":" + config.DB.Password + config.DB.Soc + config.DB.TableName
 	conexion, err := gorm.Open(mysql.Open(dns), &gorm.Config{})
 	if err != nil {
 		panic(err.Error())

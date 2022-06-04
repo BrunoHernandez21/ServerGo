@@ -24,6 +24,9 @@ type Users_IO struct {
 	Is_instructor     int
 	Skills            string
 	Payment_keys      string
+	Number            string
+	Name              string
+	BirthDay          string
 }
 
 func (a Users_IO) To_user() Users {
@@ -83,6 +86,9 @@ type Users struct {
 	Is_instructor     int
 	Skills            string
 	Payment_keys      string
+	Number            string
+	Name              string
+	BirthDay          string
 }
 
 func (a Users) To_user_io() Users_IO {
